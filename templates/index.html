@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TOTODO
+{% endblock %}
+
+{% block main %}
+    <h1>ToDos</h1>
+    <hr>
+
+    <table class="centered">
+        <thead>
+            <tr>
+                <th id="status">Status</th>
+                <th>Todo</th>
+                <th>Tags</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+                <tr class="{{ todo.status }}"">
+                    <td>{{ todo.status }}</td>
+                    <td>{{ todo.todo }}</td>
+                    <td>{{ todo.tags }}</td>
+                    <td>{{ todo.date }}</td>
+                    <td>{{ todo.time }}</td>
+                    <td>
+                        <form action="/{{ todo.status }}" method="post">
+                            <button name="todo_id" value="{{ todo.id }}"></button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/DELETE" method="post">
+                            <button name="todo_id" value="{{ todo.id }}">DELETE</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="static/js/index.js"></script>
+{% endblock %}

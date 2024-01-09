@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tags
+{% endblock %}
+
+{% block main %}
+    <h1>Create Tag</h1>
+    <hr>
+
+    <form action="/tags" method="post">
+        <input autocomplete="off" autofocus name="name" placeholder="Tag name" required type="text">
+        <button>Create</button>
+    </form>
+
+    <h1>Tags</h1>
+    <hr>
+        <table class="centered">
+            <thead>
+                <tr>
+                    <th>Tags</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tag in tags %}
+                <tr>
+                    <td>{{ tag.name }}</td>
+                    <td class="editForms">
+                        <button id="edit_button">Edit</button>
+                        <form action="/tag_edit" method="post">
+                            <input name="new_name" value="{{ tag.name }}">
+                            <button name="tag_id" value="{{ tag.id }}">Confirm</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/tag_delete" method="post">
+                            <button name="tag_id" value="{{ tag.id }}">DELETE</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <script src="static/js/tags.js"></script>
+
+{% endblock %}
