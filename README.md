@@ -72,7 +72,7 @@ CSS:
 
 I use SQLite3 to manage database. It's called `todos.db`:
 - There are 4 tables (`users`, `todos`, `tags`, `tagging`)
-- I decided to use seperate tagging system, so that each entry can have multiple tags and it's going to be easier if user wants to edit tags.
+- I decided to use separate tagging system, so that each entry can have multiple tags and it's going to be easier if user wants to edit tags.
 
 ## About Me
 
